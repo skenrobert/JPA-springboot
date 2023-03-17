@@ -1,17 +1,35 @@
 package com.example.firststeps.university.universitybackend.modelo.entidades;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Entity
+@Table(name = "personas")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Persona implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(nullable = false, length = 60)
     private String nombre;
+    @Column(nullable = false, length = 60)
     private String apellido;
+    @Column(nullable = false, unique = true, length = 10)
     private String cedula;
+    @Column(name = "fecha_alta")
     private LocalDateTime fechaAlta;
-    private LocalDateTime fechaModificacio;
+    @Column(name = "fecha_modificacion")
+    private LocalDateTime fechaModificacion;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "codigoPostal", column = @Column(name = "codigo_postal")),
+            @AttributeOverride(name = "dpto", column = @Column(name = "departamento"))
+    })
     private Direccion direccion;
 
     public Persona() {
@@ -66,11 +84,11 @@ public abstract class Persona implements Serializable {
     }
 
     public LocalDateTime getFechaModificacio() {
-        return fechaModificacio;
+        return fechaModificacion;
     }
 
     public void setFechaModificacio(LocalDateTime fechaModificacio) {
-        this.fechaModificacio = fechaModificacio;
+        this.fechaModificacion = fechaModificacio;
     }
 
     public Direccion getDireccion() {
@@ -81,6 +99,16 @@ public abstract class Persona implements Serializable {
         this.direccion = direccion;
     }
 
+    @PrePersist
+    private void antesDepersistir(){
+        this.fechaAlta = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    private void antesDeUpdate(){
+        this.fechaModificacion = LocalDateTime.now();
+    }
+
     @Override
     public String toString() {
         return "Persona{" +
@@ -89,7 +117,7 @@ public abstract class Persona implements Serializable {
                 ", apellido='" + apellido + '\'' +
                 ", cedula='" + cedula + '\'' +
                 ", fechaAlta=" + fechaAlta +
-                ", fechaModificacio=" + fechaModificacio +
+                ", fechaModificacio=" + fechaModificacion +
                 ", direccion=" + direccion +
                 '}';
     }

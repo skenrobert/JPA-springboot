@@ -1,7 +1,10 @@
 package com.example.firststeps.university.universitybackend.modelo.entidades;
 
+import jakarta.persistence.Embeddable;
+
 import java.io.Serializable;
 
+@Embeddable
 public class Direccion implements Serializable {
 
     private String calle;

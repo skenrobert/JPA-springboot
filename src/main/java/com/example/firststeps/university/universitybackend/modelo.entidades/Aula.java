@@ -1,20 +1,45 @@
 package com.example.firststeps.university.universitybackend.modelo.entidades;
 
 import com.example.firststeps.university.universitybackend.modelo.entidades.enumeradores.Pizarron;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Entity
+@Table(name = "aulas")
 public class Aula implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "numero_aula", nullable = false)
     private Integer nroAula;
+    @Column(name = "medidas_mtsxmts")
     private String medidas;
+    @Column(name = "cantidad_pupitres")
     private Integer cantidadPupitres;
+    @Column(name = "tipo_pizarron")
+    @Enumerated(EnumType.STRING)
     private Pizarron pizarron;
+    @Column(name = "fecha_alta")
     private LocalDateTime fechaAlta;
+    @Column(name = "fecha_modificacion")
     private LocalDateTime fechaModificacion;
+
+    @ManyToOne(
+            optional = true,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }
+    )
+    @JoinColumn(
+            name = "pabellon_id",
+            foreignKey = @ForeignKey(name = "FK_PABELLON_ID")
+    )
+    private Pabellon pabellon;
 
     public Aula() {
     }
@@ -81,6 +106,24 @@ public class Aula implements Serializable {
 
     public void setFechaModificacion(LocalDateTime fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
+    }
+
+    public Pabellon getPabellon() {
+        return pabellon;
+    }
+
+    public void setPabellon(Pabellon pabellon) {
+        this.pabellon = pabellon;
+    }
+
+    @PrePersist
+    private void antesDepersistir(){
+        this.fechaAlta = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    private void antesDeUpdate(){
+        this.fechaModificacion = LocalDateTime.now();
     }
 
     @Override
