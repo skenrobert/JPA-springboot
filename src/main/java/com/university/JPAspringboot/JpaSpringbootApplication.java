@@ -9,7 +9,7 @@ public class JpaSpringbootApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(JpaSpringbootApplication.class, args);
-		/*System.out.println("hello word"+ SpringVersion.getVersion());*/
+		System.out.println("hello word"+ SpringVersion.getVersion());
 
 	}
 

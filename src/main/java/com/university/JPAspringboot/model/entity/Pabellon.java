@@ -34,6 +34,10 @@ public class Pabellon implements Serializable {
             fetch = FetchType.LAZY
     )
     private Set<Aula> aulas;
+
+   /* @OneToOne(mappedBy = "empleado", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Empleado empleado;*/
+
     public Pabellon() {
     }
 
