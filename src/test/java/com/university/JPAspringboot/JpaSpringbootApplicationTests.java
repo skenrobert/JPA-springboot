@@ -1,10 +1,10 @@
-package com.example.firststeps.university.universitybackend;
+package com.university.JPAspringboot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UniversityBackendApplicationTests {
+class JpaSpringbootApplicationTests {
 
 	@Test
 	void contextLoads() {

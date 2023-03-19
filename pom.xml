@@ -8,18 +8,18 @@
 		<version>3.0.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example.firststeps.university</groupId>
-	<artifactId>university-backend</artifactId>
+	<groupId>com.university</groupId>
+	<artifactId>JPA-springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>university backend</name>
-	<description>Demo project for Spring Boot</description>
+	<name>JPA-springboot</name>
+	<description>JPA-springboot</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
 		<dependency>
@@ -41,6 +41,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0.2</version>
 		</dependency>
 	</dependencies>
 

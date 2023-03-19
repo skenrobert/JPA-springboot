@@ -1,8 +1,8 @@
-package com.example.firststeps.university.universitybackend.modelo.entidades;
+package com.university.JPAspringboot.model.entity;
 
-import com.example.firststeps.university.universitybackend.modelo.entidades.enumeradores.Pizarron;
-import jakarta.persistence.*;
+import com.university.JPAspringboot.model.entity.enumeratos.Pizarron;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -36,8 +36,8 @@ public class Aula implements Serializable {
             }
     )
     @JoinColumn(
-            name = "pabellon_id",
-            foreignKey = @ForeignKey(name = "FK_PABELLON_ID")
+            name = "pabellon_id"//,
+            //foreignKey = @ForeignKey(name = "FK_PABELLON_ID")
     )
     private Pabellon pabellon;
 

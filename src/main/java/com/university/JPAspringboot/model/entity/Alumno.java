@@ -1,6 +1,6 @@
-package com.example.firststeps.university.universitybackend.modelo.entidades;
+package com.university.JPAspringboot.model.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "alumnos")

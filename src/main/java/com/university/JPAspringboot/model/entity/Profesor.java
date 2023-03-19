@@ -1,7 +1,6 @@
-package com.example.firststeps.university.universitybackend.modelo.entidades;
+package com.university.JPAspringboot.model.entity;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -19,9 +18,9 @@ public class Profesor extends Persona{
             }
     )
     @JoinTable(
-        name = "profesor_carrera",
-        joinColumns = @JoinColumn(name = "profesor_id"),
-       inverseJoinColumns = @JoinColumn(name = "carrera_id")
+            name = "profesor_carrera",
+            joinColumns = @JoinColumn(name = "profesor_id"),
+            inverseJoinColumns = @JoinColumn(name = "carrera_id")
     )
     private Set<Carrera> carreras;
 

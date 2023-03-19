@@ -1,7 +1,6 @@
-package com.example.firststeps.university.universitybackend.modelo.entidades;
+package com.university.JPAspringboot.model.entity;
 
-import jakarta.persistence.Embeddable;
-
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable

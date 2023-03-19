@@ -1,7 +1,6 @@
-package com.example.firststeps.university.universitybackend.modelo.entidades;
+package com.university.JPAspringboot.model.entity;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
