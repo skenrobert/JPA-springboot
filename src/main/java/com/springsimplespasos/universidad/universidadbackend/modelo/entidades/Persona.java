@@ -21,7 +21,7 @@ public abstract class Persona implements Serializable {
     private String nombre;
     @Column(nullable = false, length = 60)
     private String apellido;
-    @Column(nullable = false, unique = true, length = 10)
+    @Column(nullable = false, unique = true, length = 20)
     private String dni;
     @Column(name = "fecha_alta")
     private LocalDateTime fechaAlta;
