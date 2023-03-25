@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository("repositorioAlumnos") //generate custom bean
 public interface AlumnoRepository extends PersonaRepository {
 
-    @Query("select a from Alumno a join fetch a.carrera c where c.nombre = ?1")
+    @Query("select a from Alumno a join fetch a.carrera c where c.nombre = ?1")  //la carga peresosa o fetch = FetchType.LAZY, causa cambio en esta consulta sql agregando el join fetch
     Iterable<Persona> buscarAlumnosPorNombreCarrera(String nombre);
 
 }

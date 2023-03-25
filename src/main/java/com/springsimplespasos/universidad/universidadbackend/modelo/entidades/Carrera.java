@@ -30,7 +30,7 @@ public class Carrera implements Serializable {
             mappedBy = "carrera",
             fetch = FetchType.LAZY
     )
-    @JsonIgnoreProperties({"carrera"})
+    @JsonIgnoreProperties({"carrera"})// LAZY cause a loop in the api because use this line no call recursiva
     private Set<Alumno> alumnos;
     @ManyToMany(
             mappedBy = "carreras",
